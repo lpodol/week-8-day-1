@@ -1,0 +1,22 @@
+<html>
+<body>
+  <h1>Here are some random movie ratings, friend:</h1>
+  <ul></ul>
+  <script>
+  var url = "http://localhost:3000"
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", url);
+  xhr.addEventListener('load', function(e){
+    var d = xhr.responseText;
+    var parsed = JSON.parse(d);
+    var mesg = parsed.msg;
+      var li = document.createElement("li");
+      var ul = document.querySelector("ul");
+      li.innerText = mesg;
+      ul.appendChild(li);
+    };
+  });
+  xhr.send();
+  </script>
+</body>
+</html>

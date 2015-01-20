@@ -1,0 +1,19 @@
+<html>
+  <body>
+    <h1>Hey, I got a message for you:</h1>
+    <h2></h2>
+    <script>
+    var url = "http://localhost:3000"
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", url);
+    xhr.addEventListener('load', function(e) {
+      var d = xhr.responseText;
+      var parsed = JSON.parse(d);
+      console.log(parsed.msg);
+      var h2 = document.querySelector("h2");
+      h2.innerHTML = parsed.msg;
+    });
+    xhr.send();
+    </script>
+  </body>
+</html>
