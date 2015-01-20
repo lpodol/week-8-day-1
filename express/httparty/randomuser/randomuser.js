@@ -1,8 +1,11 @@
-var request = require('request');
-var url = "http://api.randomuser.me/";
-request(url, function (err, response, body){
-  if (!err && response.statusCode == 200){
-    data = JSON.parse(body);
-    console.log((data["results"][0]["user"]["name"]["first"]) + ", " + (data["results"][0]["user"]["email"]))
-  }
-})
+require 'sinatra'
+require 'json'
+require 'HTTParty'
+
+response = HTTParty.get("http://api.randomuser.me/")
+
+get '/' do
+content_type :json
+var data = response["results"][0]["user"]["name"]["first"]) + " " + (data["results"][0]["user"]["name"]["last"]))
+data.to_json
+end
